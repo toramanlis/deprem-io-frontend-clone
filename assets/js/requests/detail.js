@@ -66,9 +66,22 @@ function getItem() {
     item = item.results;
     const acilDurum = item.acilDurum;
     const yardimDurum = item.yardimDurumu;
-
+    const aracDurum = item.fields.aracDurumu;
+    console.log(aracDurum);
     status.getElementsByTagName("p")[0].innerHTML =
       yardimDurum + " - " + acilDurum;
+
+    if (aracDurum === "var") {
+      document.getElementById("araciVar").checked = true;
+      document.getElementById("araciYok").disabled = true;
+    } else if (aracDurum === "yok") {
+      document.getElementById("araciVar").disabled = true;
+      document.getElementById("araciYok").checked = true;
+    } else {
+      document.getElementById("araciVar").disabled = true;
+      document.getElementById("araciYok").disabled = true;
+    }
+
     if (acilDurum === "kritik") {
       document.getElementById("kritik").checked = true;
       document.getElementById("orta").disabled = true;
